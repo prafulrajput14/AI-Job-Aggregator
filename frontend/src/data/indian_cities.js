@@ -1,0 +1,23 @@
+export const INDIAN_CITIES = [
+    "Agartala, Tripura", "Agra, Uttar Pradesh", "Ahmedabad, Gujarat", "Ahmednagar, Maharashtra", "Aizawl, Mizoram", "Ajmer, Rajasthan", "Akola, Maharashtra", "Aligarh, Uttar Pradesh", "Allahabad, Uttar Pradesh", "Alwar, Rajasthan",
+    "Ambala, Haryana", "Amravati, Maharashtra", "Amritsar, Punjab", "Anantapur, Andhra Pradesh", "Arrah, Bihar", "Asansol, West Bengal", "Aurangabad, Maharashtra", "Avadi, Tamil Nadu", "Bangalore, Karnataka",
+    "Barasat, West Bengal", "Bardhaman, West Bengal", "Bareilly, Uttar Pradesh", "Bathinda, Punjab", "Begusarai, Bihar", "Belgaum, Karnataka", "Bellary, Karnataka", "Berhampur, Odisha", "Bhagalpur, Bihar",
+    "Bharatpur, Rajasthan", "Bhilai, Chhattisgarh", "Bhilwara, Rajasthan", "Bhiwandi, Maharashtra", "Bhopal, Madhya Pradesh", "Bhubaneswar, Odisha", "Bihar Sharif, Bihar", "Bijapur, Karnataka", "Bikaner, Rajasthan",
+    "Bilaspur, Chhattisgarh", "Bokaro, Jharkhand", "Chandigarh, Chandigarh", "Chandrapur, Maharashtra", "Chennai, Tamil Nadu", "Chittoor, Andhra Pradesh", "Coimbatore, Tamil Nadu", "Cuttack, Odisha", "Darbhanga, Bihar",
+    "Davangere, Karnataka", "Dehradun, Uttarakhand", "Delhi, Delhi", "Dewas, Madhya Pradesh", "Dhanbad, Jharkhand", "Dhule, Maharashtra", "Dindigul, Tamil Nadu", "Durgapur, West Bengal", "Erode, Tamil Nadu", "Etawah, Uttar Pradesh",
+    "Faridabad, Haryana", "Firozabad, Uttar Pradesh", "Gandhidham, Gujarat", "Gandhinagar, Gujarat", "Gaya, Bihar", "Ghaziabad, Uttar Pradesh", "Gopalpur, Odisha", "Gorakhpur, Uttar Pradesh", "Gulbarga, Karnataka",
+    "Guntur, Andhra Pradesh", "Gurgaon, Haryana", "Guwahati, Assam", "Gwalior, Madhya Pradesh", "Haldia, West Bengal", "Hapur, Uttar Pradesh", "Haridwar, Uttarakhand", "Hazaribagh, Jharkhand", "Hindupur, Andhra Pradesh", "Hisar, Haryana",
+    "Hoshiarpur, Punjab", "Howrah, West Bengal", "Hubli-Dharwad, Karnataka", "Hyderabad, Telangana", "Imphal, Manipur", "Indore, Madhya Pradesh", "Jabalpur, Madhya Pradesh", "Jaipur, Rajasthan", "Jalandhar, Punjab",
+    "Jalgaon, Maharashtra", "Jalna, Maharashtra", "Jammu, J&K", "Jamnagar, Gujarat", "Jamshedpur, Jharkhand", "Jhansi, Uttar Pradesh", "Jodhpur, Rajasthan", "Junagadh, Gujarat", "Kakinada, Andhra Pradesh", "Kalyan-Dombivali, Maharashtra",
+    "Kamarhati, West Bengal", "Kanpur, Uttar Pradesh", "Karimnagar, Telangana", "Karnal, Haryana", "Kochi, Kerala", "Kolhapur, Maharashtra", "Kolkata, West Bengal", "Korba, Chhattisgarh", "Kota, Rajasthan", "Kozhikode, Kerala",
+    "Kurnool, Andhra Pradesh", "Latur, Maharashtra", "Lucknow, Uttar Pradesh", "Ludhiana, Punjab", "Madurai, Tamil Nadu", "Maheshtala, West Bengal", "Malegaon, Maharashtra", "Mangalore, Karnataka", "Mango, Jharkhand", "Mathura, Uttar Pradesh",
+    "Meerut, Uttar Pradesh", "Mira-Bhayandar, Maharashtra", "Mirzapur, Uttar Pradesh", "Moradabad, Uttar Pradesh", "Mumbai, Maharashtra", "Muzaffarnagar, Uttar Pradesh", "Muzaffarpur, Bihar", "Mysore, Karnataka", "Nadiad, Gujarat",
+    "Nagpur, Maharashtra", "Naihati, West Bengal", "Nanded, Maharashtra", "Nashik, Maharashtra", "Navi Mumbai, Maharashtra", "Nellore, Andhra Pradesh", "New Delhi, Delhi", "Nizamabad, Telangana", "Noida, Uttar Pradesh", "Ozhukarai, Puducherry",
+    "Pali, Rajasthan", "Panipat, Haryana", "Panvel, Maharashtra", "Parbhani, Maharashtra", "Patiala, Punjab", "Patna, Bihar", "Pimpri-Chinchwad, Maharashtra", "Pondicherry, Puducherry", "Pune, Maharashtra", "Puri, Odisha",
+    "Purnia, Bihar", "Raichur, Karnataka", "Raipur, Chhattisgarh", "Rajahmundry, Andhra Pradesh", "Rajkot, Gujarat", "Ramagundam, Telangana", "Rampur, Uttar Pradesh", "Ranchi, Jharkhand", "Ratlam, Madhya Pradesh", "Rourkela, Odisha",
+    "Sagar, Madhya Pradesh", "Saharanpur, Uttar Pradesh", "Salem, Tamil Nadu", "Sangli, Maharashtra", "Satara, Maharashtra", "Satna, Madhya Pradesh", "Secunderabad, Telangana", "Serampore, West Bengal", "Shahjahanpur, Uttar Pradesh", "Shimla, Himachal Pradesh",
+    "Shimoga, Karnataka", "Siliguri, West Bengal", "Solapur, Maharashtra", "Sonipat, Haryana", "South Dumdum, West Bengal", "Sri Ganganagar, Rajasthan", "Srinagar, J&K", "Surat, Gujarat", "Thane, Maharashtra",
+    "Thanjavur, Tamil Nadu", "Thiruvananthapuram, Kerala", "Thrissur, Kerala", "Tiruchirappalli, Tamil Nadu", "Tirunelveli, Tamil Nadu", "Tirupati, Andhra Pradesh", "Tiruppur, Tamil Nadu", "Tiruvottiyur, Tamil Nadu",
+    "Tumkur, Karnataka", "Udaipur, Rajasthan", "Ujjain, Madhya Pradesh", "Ulhasnagar, Maharashtra", "Vadodara, Gujarat", "Varanasi, Uttar Pradesh", "Vasai-Virar, Maharashtra", "Vijayawada, Andhra Pradesh", "Visakhapatnam, Andhra Pradesh",
+    "Vizianagaram, Andhra Pradesh", "Warangal, Telangana", "Yamunanagar, Haryana"
+];

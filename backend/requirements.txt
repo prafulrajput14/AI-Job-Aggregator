@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+requests
+beautifulsoup4
+selenium
+webdriver-manager
+pydantic
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+python-jobspy
+# Scalability Dependencies
+psycopg2-binary
+celery
+redis
+eventlet
+python-dotenv

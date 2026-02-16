@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Software Engineer Intern",
+    "company": "TechCorp",
+    "location": "Remote",
+    "description": "Looking for a Python developer intern. Skills: Python, Django, SQL.",
+    "url": "https://example.com/job/1",
+    "date_posted": "2023-10-25"
+  },
+  {
+    "id": 2,
+    "title": "Data Analyst",
+    "company": "DataViz Inc.",
+    "location": "New York, NY",
+    "description": "Analyze data using Python and SQL. Experience with Pandas required.",
+    "url": "https://example.com/job/2",
+    "date_posted": "2023-10-24"
+  },
+  {
+    "id": 3,
+    "title": "Frontend Developer",
+    "company": "WebFlow",
+    "location": "San Francisco, CA",
+    "description": "Build responsive UIs with React and Tailwind CSS.",
+    "url": "https://example.com/job/3",
+    "date_posted": "2023-10-23"
+  }
+]
