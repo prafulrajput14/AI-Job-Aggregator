@@ -33,11 +33,11 @@ def startup_event():
     init_db()
     cleanup_old_jobs()
 
-@app.get("/")
+@app.get("/api")
 def read_root():
     return {"message": "Job Aggregator API is running!"}
 
-@app.get("/jobs")
+@app.get("/api/jobs")
 def get_jobs(q: str = None, filter_type: str = "All", location: str = None):
     # Map frontend filter_type to backend logic if needed
     # for now pass straight to get_all_jobs
@@ -52,7 +52,7 @@ class LoginRequest(BaseModel):
     email: str
     password: str
 
-@app.post("/register")
+@app.post("/api/register")
 def register(user: User):
     try:
         hashed_password = get_password_hash(user.password)
@@ -64,7 +64,7 @@ def register(user: User):
         logger.error(f"Register Error: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.post("/login")
+@app.post("/api/login")
 def login(login_request: LoginRequest):
     user = get_user_by_email(login_request.email)
     
@@ -105,7 +105,7 @@ def run_scraper_task(task_id: str, search_term: str, location: str, job_type: st
         print(f"❌ [Scraper] Failed: {e}")
         tasks[task_id] = {"status": "FAILURE", "error": str(e)}
 
-@app.post("/fetch_jobs")
+@app.post("/api/fetch_jobs")
 def trigger_fetch_jobs(
     background_tasks: BackgroundTasks,
     search_term: str, 
@@ -125,7 +125,7 @@ def trigger_fetch_jobs(
         "status": "queued"
     }
 
-@app.get("/tasks/{task_id}")
+@app.get("/api/tasks/{task_id}")
 def get_task_status_local(task_id: str):
     task = tasks.get(task_id)
     if not task:

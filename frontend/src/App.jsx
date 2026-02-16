@@ -197,8 +197,8 @@ function App() {
       results_wanted: 10
     });
 
-    // Use hardcoded local URL to avoid environment variable issues in Emergency Mode
-    const API_BASE_URL = 'http://127.0.0.1:8000';
+    // Use relative path for Vercel deployment (Proxy handles /api -> Backend)
+    const API_BASE_URL = '/api';
 
     // Trigger the background task with a STRICT FAILSAFE timeout (3 seconds)
     const fetchWithTimeout = (url, options, timeout = 3000) => {
@@ -298,6 +298,8 @@ function App() {
     if (fetchLocation) refreshParams.append('location', fetchLocation);
     refreshParams.append('results_wanted', '50');
 
+    // Use relative path for Vercel
+    const API_BASE_URL = '/api';
     fetch(`${API_BASE_URL}/jobs?${refreshParams.toString()}`)
       .then(res => res.json())
       .then(data => {
