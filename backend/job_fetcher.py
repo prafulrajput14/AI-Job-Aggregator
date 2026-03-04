@@ -1,5 +1,6 @@
 import logging
 import random
+import uuid
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -11,57 +12,61 @@ def fetch_jobs_from_web(search_term="software engineer", location="India", resul
     EMERGENCY MODE: Returns mock data to ensure site works for resume/demo immediately.
     This bypasses any potential scraping blocks or connection hangs.
     """
-    logger.info(f"🕵️ [MOCK] Fetching jobs for {search_term} in {location}...")
+    logger.info(f"🕵️ [REAL] Scraping jobs for {search_term} in {location}...")
     
-    # --- MOCK DATA FOR DEMO/RESUME STABILITY ---
-    mock_titles = [
-        f"Senior {search_term.title()} Developer",
-        f"{search_term.title()} Engineer",
-        f"Junior {search_term.title()}",
-        f"Lead {search_term.title()}",
-        f"{search_term.title()} Intern",
-        f"Principal {search_term.title()} Architect",
-        f"{search_term.title()} Consultant",
-        f"Remote {search_term.title()} Role"
-    ]
-    
-    mock_companies = ["Tech Giants Inc.", "Startup Hub", "Creative Solutions", "Global Systems", "Future Tech", "InnovateX", "DataCorp"]
-    mock_sites = ["LinkedIn", "Glassdoor", "Indeed", "Naukri", "Instahyre"]
-    
-    jobs = []
-    # Ensure we return at least 'results_wanted' jobs, minimum 15 for good UX
-    for _ in range(max(results_wanted, 15)):
-        base_title = random.choice(mock_titles)
-        base_company = random.choice(mock_companies)
-        base_site = random.choice(mock_sites)
+    try:
+        from jobspy import scrape_jobs
+        import pandas as pd
         
-        # Randomize location slightly if generic
-        loc = location.title() if location else "Remote"
-        if is_remote and random.random() > 0.3:
-            loc = "Remote"
+        # jobspy expects job type formatting
+        jt = "fulltime"
+        if "intern" in job_type.lower():
+            jt = "internship"
+        elif "contract" in job_type.lower():
+            jt = "contract"
+
+        # Determine sources based on what works best for India/Remote
+        site_names = ["linkedin", "indeed", "glassdoor"]
+        
+        jobs_df = scrape_jobs(
+            site_name=site_names,
+            search_term=search_term,
+            location=location,
+            results_wanted=results_wanted,
+            country_linkedin="in", # Defaulting to India as per previous logic
+            is_remote=is_remote,
+            job_type=jt
+        )
+        
+        jobs = []
+        if jobs_df.empty:
+            logger.warning("⚠️ No jobs found by scraper.")
+            return jobs
             
-        # Dynamic Link Generation for Realism
-        # Search for the ROLE + LOCATION only (Removing company to ensure results found)
-        query = f"{base_title}".replace(" ", "%20")
-        encoded_loc = location.replace(" ", "%20")
+        # Convert NaN to None for JSON serialization and DB insertion
+        jobs_df = jobs_df.where(pd.notnull(jobs_df), None)
         
-        jobs.append({
-            "title": base_title,
-            "company": base_company,
-            "location": loc,
-            # Point to broadly relevant search results
-            "url": f"https://www.linkedin.com/jobs/search?keywords={query}&location={encoded_loc}", 
-            "site": base_site,
-            "date_posted": "Just now",
-            "is_remote": is_remote or (loc == "Remote"),
-            "job_type": job_type or "Full-time",
-            "description": f"Exciting opportunity for a {search_term} developer... Join our team at {base_company}!",
-            "salary": f"₹{random.randint(6, 30)},00,000",
-            "currency": "INR"
-        })
-    
-    logger.info(f"✅ [MOCK] Returning {len(jobs)} guaranteed results.")
-    return jobs
+        for index, row in jobs_df.iterrows():
+            jobs.append({
+                "title": str(row.get('title', 'Unknown Title')),
+                "company": str(row.get('company', 'Unknown Company')),
+                "location": str(row.get('location', location)),
+                "url": str(row.get('job_url')) if pd.notna(row.get('job_url')) and str(row.get('job_url')).strip() else f"https://job-aggregator.local/{uuid.uuid4().hex}",
+                "site": str(row.get('site', 'External')),
+                "date_posted": str(row.get('date_posted', '')),
+                "is_remote": row.get('is_remote', False) or is_remote,
+                "job_type": str(row.get('job_type', job_type)),
+                "description": str(row.get('description', '')),
+                "salary": str(row.get('min_amount', '')) + (" - " + str(row.get('max_amount', '')) if row.get('max_amount') else ""),
+                "currency": str(row.get('currency', ''))
+            })
+            
+        logger.info(f"✅ [REAL] Successfully scraped {len(jobs)} jobs.")
+        return jobs
+        
+    except Exception as e:
+        logger.error(f"❌ [Scraper] Error during live scrape: {e}")
+        return []
 
 if __name__ == "__main__":
     # Test fetch
