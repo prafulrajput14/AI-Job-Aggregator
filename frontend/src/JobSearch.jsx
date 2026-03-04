@@ -33,7 +33,7 @@ function JobSearch({ theme }) {
 
     useEffect(() => {
         // Fetch system status on load to show cache freshness
-        fetch('/api/system/status')
+        fetch(${import.meta.env.VITE_API_URL || ''}/api/system/status')
             .then(res => res.json())
             .then(data => setSystemStatus(data))
             .catch(err => console.error("Could not fetch system status", err));

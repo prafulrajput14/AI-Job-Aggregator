@@ -24,7 +24,7 @@ function Dashboard() {
         if (token) {
             const fetchSavedJobs = async () => {
                 try {
-                    const response = await fetch('/api/user/saved_jobs', {
+                    const response = await fetch(${import.meta.env.VITE_API_URL || ''}/api/user/saved_jobs', {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     if (response.ok) {
@@ -38,7 +38,7 @@ function Dashboard() {
 
             const fetchAlerts = async () => {
                 try {
-                    const response = await fetch('/api/alerts', {
+                    const response = await fetch(${import.meta.env.VITE_API_URL || ''}/api/alerts', {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     if (response.ok) {
@@ -79,7 +79,7 @@ function Dashboard() {
         if (!newKeyword.trim()) return;
 
         try {
-            const response = await fetch('/api/alerts', {
+            const response = await fetch(${import.meta.env.VITE_API_URL || ''}/api/alerts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ function Dashboard() {
                 setNewKeyword('');
                 setNewLocation('');
                 // Refresh alerts
-                const fetchRes = await fetch('/api/alerts', { headers: { 'Authorization': `Bearer ${token}` } });
+                const fetchRes = await fetch(${import.meta.env.VITE_API_URL || ''}/api/alerts', { headers: { 'Authorization': `Bearer ${token}` } });
                 const data = await fetchRes.json();
                 setAlerts(data);
                 toast.success("Alert created!");
