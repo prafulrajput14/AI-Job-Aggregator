@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
     const fetchUser = async (authToken) => {
         try {
-            const response = await fetch(${import.meta.env.VITE_API_URL || ''}/api/user/me', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/user/me`, {
                 headers: {
                     'Authorization': `Bearer ${authToken}`
                 }
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
             formData.append('username', email); // OAuth2PasswordRequestForm expects 'username'
             formData.append('password', password);
 
-            const response = await fetch(${import.meta.env.VITE_API_URL || ''}/api/login', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (email, password, fullName) => {
         try {
-            const response = await fetch(${import.meta.env.VITE_API_URL || ''}/api/register', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, full_name: fullName })
