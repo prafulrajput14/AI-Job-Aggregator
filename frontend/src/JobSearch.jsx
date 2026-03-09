@@ -104,7 +104,7 @@ function JobSearch({ theme }) {
         const maxAttempts = 3;
 
         const pollBackend = () => {
-            fetch(`/api/jobs?${pollParams.toString()}`)
+            fetch(`https://ai-job-aggregator-1.onrender.com/api/jobs?${pollParams.toString()}`)
                 .then(res => res.json())
                 .then(currentJobs => {
                     attempts++;
@@ -147,7 +147,7 @@ function JobSearch({ theme }) {
         refreshParams.append('sort_by', 'newest');
         refreshParams.append('date_posted_filter', 'any');
 
-        fetch(`/api/jobs?${refreshParams.toString()}`)
+        fetch(`https://ai-job-aggregator-1.onrender.com/api/jobs?${refreshParams.toString()}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0) {

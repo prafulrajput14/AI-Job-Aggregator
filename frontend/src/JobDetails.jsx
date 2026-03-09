@@ -18,7 +18,7 @@ function JobDetails() {
             }
 
             try {
-                const res = await fetch(`/api/jobs/${id}`);
+                const res = await fetch(`https://ai-job-aggregator-1.onrender.com/api/jobs/${id}`)
                 if (res.ok) {
                     const data = await res.json();
                     setJob(data);
